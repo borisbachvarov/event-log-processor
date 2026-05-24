@@ -20,7 +20,7 @@ public class ReportPrinter {
 
         System.out.printf("Total purchase amount: %.2f%n", stats.totalPurchaseAmount);
         System.out.printf("Average purchase amount: %.2f%n", stats.averagePurchaseAmount);
-        System.out.printf("larges purchase: %.2f%n", stats.largestPurchase);
+        System.out.printf("largest purchase: %.2f%n", stats.largestPurchase);
         System.out.println();
 
         System.out.println("Most active user: " + stats.mostActiveUser);

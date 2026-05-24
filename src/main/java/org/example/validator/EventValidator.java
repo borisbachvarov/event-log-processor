@@ -17,9 +17,8 @@ public class EventValidator {
         if (isBlank(event.getTimestamp()))    return invalid(lineNumber, "timestamp is missing");
         if (isBlank(event.getAction()))    return invalid(lineNumber, "action is missing");
 
-        if (isValidUUID(event.getEventId()))    return invalid(lineNumber, "eventId is not a valid UUID");
-        if (isValidUUID(event.getUserId()))    return invalid(lineNumber, "userId is not a valid UUID");
-        if (isValidUUID(event.getTimestamp()))    return invalid(lineNumber, "timestamp is not valid ISO-8601");
+        if (!isValidUUID(event.getEventId()))    return invalid(lineNumber, "eventId is not a valid UUID");
+        if (!isValidUUID(event.getUserId()))    return invalid(lineNumber, "userId is not a valid UUID");
 
         if (!isValidTimestamp(event.getTimestamp())) return invalid(lineNumber, "timestamp is not valid ISO-8601");
 
@@ -51,9 +50,9 @@ public class EventValidator {
     private boolean isValidUUID(String uuid) {
         try{
             UUID.fromString(uuid);
-            return false;
-        } catch (IllegalArgumentException e) {
             return true;
+        } catch (IllegalArgumentException e) {
+            return false;
         }
     }
 
